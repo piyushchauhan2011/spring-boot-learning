@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Learning API — static demo</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+            integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+            crossorigin="anonymous"></script>
+</head>
+<body>
+<h1>Locale greeting (no auth)</h1>
+<p id="greeting">Loading…</p>
+<script>
+    $.ajax({
+        url: '/api/v1/locale/greeting',
+        headers: {'Accept-Language': 'fr'}
+    }).done(function (text) {
+        $('#greeting').text(text);
+    }).fail(function () {
+        $('#greeting').text('Request failed (is the API running on :8080?)');
+    });
+</script>
+</body>
+</html>

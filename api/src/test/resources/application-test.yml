@@ -1,0 +1,18 @@
+spring:
+  mail:
+    host: 127.0.0.1
+    port: 3025
+  jpa:
+    hibernate:
+      ddl-auto: validate
+  flyway:
+    enabled: true
+
+logging:
+  level:
+    root: WARN
+    com.learning.backend: INFO
+
+app:
+  jwt:
+    secret: "0123456789abcdef0123456789abcdef"

@@ -1,0 +1,5 @@
+# Dev-only overrides. Compose brings Postgres/Rabbit/Mailhog on localhost.
+
+logging:
+  level:
+    com.learning.backend: DEBUG
