@@ -30,17 +30,23 @@ More detailed setup, URLs, and workflow notes: [docs/DEVELOPMENT.md](docs/DEVELO
    mvn -pl api spring-boot:run
    ```
 
-4. Run the worker (consumes `task.created` and sends notification mail to MailHog):
+4. Run the worker (consumes `task.created` and sends notification mail to [Mailpit](https://github.com/axllent/mailpit)):
 
    ```bash
    mvn -pl worker spring-boot:run
    ```
 
 5. Open **Swagger UI**: [http://localhost:8080/swagger-ui.html](http://localhost:8080/swagger-ui.html)  
-   **MailHog UI**: [http://localhost:8025](http://localhost:8025)  
+   **Mailpit UI** (captured mail): [http://localhost:8025](http://localhost:8025)  
    **RabbitMQ UI**: [http://localhost:15672](http://localhost:15672) (guest / guest)
 
 6. Static **jQuery** demo page (calls the public i18n endpoint): [http://localhost:8080/index.html](http://localhost:8080/index.html)
+
+## See it working
+
+- **Kahan summation (via API):** open [http://localhost:8080/api/v1/demo/kahan](http://localhost:8080/api/v1/demo/kahan) or run `curl -s http://localhost:8080/api/v1/demo/kahan | jq`. You should see `naiveMatchesExpected: false` and `kahanMatchesExpected: true` for the built-in ill-conditioned series. The same logic is covered by `KahanSummationTest` in the `common` module.
+- **Mailpit:** with the API running, register a user (`POST /api/v1/auth/register`) or create a task (after login); welcome mail and worker notifications go to SMTP `localhost:1025` and appear in the [Mailpit UI](http://localhost:8025).
+- **RabbitMQ:** creating a task publishes to exchange `task.events` with routing key `task.created`. In the [management UI](http://localhost:15672) (guest / guest), open **Queues** and inspect `task.created`; with the **worker** running, messages are consumed and the queue should stay near zero under light load.
 
 ## Configuration notes
 

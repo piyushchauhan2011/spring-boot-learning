@@ -4,7 +4,7 @@
 
 - **Java 17+** (the project builds on Java 17; newer LTS versions such as 21 are fine).
 - **Maven 3.9+**
-- **Docker** (for Postgres, RabbitMQ, and MailHog via Compose)
+- **Docker** (for Postgres, RabbitMQ, and [Mailpit](https://github.com/axllent/mailpit) via Compose)
 
 ## First-time setup
 
@@ -39,7 +39,7 @@
 | API | http://localhost:8080 |
 | Swagger UI | http://localhost:8080/swagger-ui.html |
 | Static demo (`index.html`) | http://localhost:8080/index.html |
-| MailHog | http://localhost:8025 |
+| Mailpit (web UI) | http://localhost:8025 |
 | RabbitMQ management | http://localhost:15672 (guest / guest) |
 
 ## Configuration and secrets

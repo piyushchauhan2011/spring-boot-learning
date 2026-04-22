@@ -1,4 +1,4 @@
-# Dev-only overrides. Compose brings Postgres/Rabbit/Mailhog on localhost.
+# Dev-only overrides. Compose brings Postgres/Rabbit/Mailpit on localhost.
 
 logging:
   level:
